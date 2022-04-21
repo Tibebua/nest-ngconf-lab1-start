@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-title>Missions</ion-title>
+    <ion-buttons slot="end" (click)="newMission()">
+      <ion-button><ion-icon name="add"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let mission of (missions | async)" (click)="openMission(mission)">
+      <ion-label>
+        <h2>{{ mission.title }}</h2>
+        <p>{{ mission.reward | currency }} - {{ mission.active ? 'Active' : 'Complete'}}</p>
+      </ion-label>
+      <ion-icon slot="start" icon="rocket" color="primary"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
